@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://bdsrclph31riy"]
+
+[ext_resource type="FontFile" uid="uid://8ya5dhpedqg3" path="res://fonts/Xolonium-Regular.ttf" id="1_37p78"]
+[ext_resource type="Script" uid="uid://bwpfj6y03sea8" path="res://hud.gd" id="1_64ctp"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_64ctp"]
+action = &"start_game"
+
+[sub_resource type="Shortcut" id="Shortcut_8sq4i"]
+events = [SubResource("InputEventAction_64ctp")]
+
+[node name="HUD" type="CanvasLayer" unique_id=539837888]
+script = ExtResource("1_64ctp")
+
+[node name="ScoreLabel" type="Label" parent="." unique_id=1861913344]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_37p78")
+theme_override_font_sizes/font_size = 64
+text = "0"
+horizontal_alignment = 1
+
+[node name="Message" type="Label" parent="." unique_id=2032459926]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -120.0
+offset_right = 0.5
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_37p78")
+theme_override_font_sizes/font_size = 64
+text = "Dodge the Creeps!"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="StartButton" type="Button" parent="." unique_id=1644897016]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -140.0
+offset_right = 4.0
+offset_bottom = -132.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_37p78")
+theme_override_font_sizes/font_size = 64
+shortcut = SubResource("Shortcut_8sq4i")
+text = "Start"
+
+[node name="MessageTimer" type="Timer" parent="." unique_id=357943749]
+wait_time = 2.0
+
+[node name="Label" type="Label" parent="." unique_id=1638616214]
+offset_left = 352.0
+offset_top = 29.0
+offset_right = 417.0
+offset_bottom = 56.0
+theme_override_fonts/font = ExtResource("1_37p78")
+theme_override_font_sizes/font_size = 22
+text = "Vidas"
+
+[node name="Vidas" type="Label" parent="." unique_id=1522824435]
+offset_left = 435.0
+offset_top = 30.0
+offset_right = 475.0
+offset_bottom = 57.0
+theme_override_fonts/font = ExtResource("1_37p78")
+theme_override_font_sizes/font_size = 22
+text = "3"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]
